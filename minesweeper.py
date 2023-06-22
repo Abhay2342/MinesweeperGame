@@ -13,7 +13,7 @@ class MinesweeperGame:
         positions = [(r, c) for r in range(self.size) for c in range(self.size)]
         positions.remove((initial_row, initial_col))
         self.mine_positions = random.sample(positions, self.num_mines)
-        self.open_cell(initial_row, initial_row)
+        self.open_cell(initial_row, initial_col)
 
     def count_adjacent_mines(self, row, col):
         count = 0
@@ -62,6 +62,9 @@ class MinesweeperGame:
         if (row, col) in self.mine_positions:
             return
 
+        if self.board[row][col] != ' ':
+            return
+
         count = self.count_adjacent_mines(row, col)
         self.board[row][col] = str(count)
 
@@ -69,8 +72,9 @@ class MinesweeperGame:
             directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
             for dr, dc in directions:
                 r, c = row + dr, col + dc
-                if 0 <= r < self.size and 0 <= c < self.size and self.board[r][c] == ' ':
+                if 0 <= r < self.size and 0 <= c < self.size:
                     self.open_cell(r, c)
+
 
 
     def mark_cell(self, row, col):
@@ -90,9 +94,11 @@ class MinesweeperGame:
             self.board[row][col] = 'M'
 
     def check_victory(self):
-        for row in self.board:
-            if 'M' in row:
-                return
+        for r, row in enumerate(self.board):
+            for c, cell in enumerate(row):
+                if cell == " " and ((r,c) not in self.mine_positions):
+                    print(self.board)
+                    return
         self.is_game_over = True
         print('Congratulations! You won the game.')
 
