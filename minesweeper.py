@@ -116,7 +116,12 @@ class MinesweeperGame:
 
 
 size = int(input('Enter the size of the board: '))
-num_mines = int(input('Enter the number of mines: '))
+while True:
+    num_mines = int(input('Enter the number of mines: '))
+    if num_mines <= ((size**2) // 2):
+        break
+    else:
+        print(f"Invalid input! Please enter a valid value. (1 - {size**2 // 2})")
 
 
 game = MinesweeperGame(size, num_mines)
