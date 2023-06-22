@@ -2,6 +2,8 @@
 
 The Python Minesweeper Game is a text-based implementation of the classic puzzle. Uncover cells without hitting mines, using logic and deduction. Customize the board size and mine count for varying difficulty levels. Test your strategic thinking and enjoy the challenge of this engaging Python game. Are you ready to conquer the mines? Let's play Minesweeper in Python!
 
+![image](https://github.com/Abhay2342/MinesweeperGame/blob/master/MinesweeperTerminal.png)
+
 ## Instructions
 
 To **download** and **play** the Minesweeper game from your GitHub repository, follow these instructions:
