@@ -1,1 +1,0 @@
-self.open_cell(initial_row, initial_col)

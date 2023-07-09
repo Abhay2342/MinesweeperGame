@@ -1,5 +1,6 @@
 import random
 
+
 class MinesweeperGame:
     def __init__(self, size, num_mines):
         self.size = size
@@ -10,7 +11,8 @@ class MinesweeperGame:
         self.is_game_over = False
 
     def initialize_board(self, initial_row, initial_col):
-        positions = [(r, c) for r in range(self.size) for c in range(self.size)]
+        positions = [(r, c) for r in range(self.size)
+                     for c in range(self.size)]
         positions.remove((initial_row, initial_col))
         self.mine_positions = random.sample(positions, self.num_mines)
         self.open_cell(initial_row, initial_col)
@@ -75,8 +77,6 @@ class MinesweeperGame:
                 if 0 <= r < self.size and 0 <= c < self.size:
                     self.open_cell(r, c)
 
-
-
     def mark_cell(self, row, col):
         if self.num_mines <= 0:
             print('No more mines to mark!')
@@ -96,12 +96,11 @@ class MinesweeperGame:
     def check_victory(self):
         for r, row in enumerate(self.board):
             for c, cell in enumerate(row):
-                if cell == " " and ((r,c) not in self.mine_positions):
+                if cell == " " and ((r, c) not in self.mine_positions):
                     print(self.board)
                     return
         self.is_game_over = True
         print('Congratulations! You won the game.')
-
 
     def get_valid_input(self, message):
         while True:
@@ -127,11 +126,14 @@ while True:
     if num_mines <= ((size**2) // 2):
         break
     else:
-        print(f"Invalid input! Please enter a valid value. (1 - {size**2 // 2})")
+        print(
+            f"Invalid input! Please enter a valid value. (1 - {size**2 // 2})")
 
 
 game = MinesweeperGame(size, num_mines)
-initial_row = game.get_valid_input('Enter initial row (0 to {}): '.format(size - 1))
-initial_col = game.get_valid_input('Enter initial column (0 to {}): '.format(size - 1))
+initial_row = game.get_valid_input(
+    'Enter initial row (0 to {}): '.format(size - 1))
+initial_col = game.get_valid_input(
+    'Enter initial column (0 to {}): '.format(size - 1))
 game.initialize_board(initial_row, initial_col)
 game.play()

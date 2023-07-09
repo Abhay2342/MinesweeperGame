@@ -43,3 +43,4 @@ python minesweeper.py
 13. If you hit a mine, the game will end and display "Game Over! You hit a mine." If you successfully uncover all non-mine cells, it will display "Congratulations! You won the game."
 
 14. Enjoy playing Minesweeper!
+
